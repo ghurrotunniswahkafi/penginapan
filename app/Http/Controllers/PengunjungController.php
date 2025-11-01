@@ -6,11 +6,13 @@ use App\Models\Kamar;
 
 class PengunjungController extends Controller
 {
-    public function __construct(){ $this->middleware('admin.auth'); }
+    public function __construct(){
+        $this->middleware(\App\Http\Middleware\AdminAuth::class);
+    }
 
     public function index(){
         $pengunjungs = Pengunjung::latest()->get();
-        return view('admin.pengunjung.index', compact('pengunjungs'));
+        return view('admin.pengunjung', compact('pengunjungs'));
     }
 
     public function create(){
@@ -24,7 +26,8 @@ class PengunjungController extends Controller
         return redirect()->route('pengunjung.index')->with('success','Data pengunjung ditambah');
     }
 
-    public function destroy(Pengunjung $pengunjung){
+    public function destroy($id){
+        $pengunjung = Pengunjung::findOrFail($id);
         $pengunjung->delete();
         return back()->with('success','Pengunjung dihapus');
     }
