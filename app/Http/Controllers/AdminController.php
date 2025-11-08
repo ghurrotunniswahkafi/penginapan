@@ -16,8 +16,17 @@ class AdminController extends Controller
     {
         $totalKamar = Kamar::count();
         $kamarKosong = Kamar::where('status','kosong')->count();
+        $kamarTerisi = max(0, $totalKamar - $kamarKosong);
         $jumlahPengunjung = Pengunjung::count();
-        // untuk 4-kisi tampilan: kita bisa kirim stats
-        return view('admin.dashboard', compact('totalKamar','kamarKosong','jumlahPengunjung'));
+        // recent activity: latest bookings, today's check-ins, upcoming check-outs
+        $recentBookings = Pengunjung::latest()->take(6)->get();
+        $today = now()->toDateString();
+        $todayCheckins = Pengunjung::whereDate('check_in', $today)->get();
+        $upcomingCheckouts = Pengunjung::whereDate('check_out', '>=', $today)->orderBy('check_out')->take(6)->get();
+
+        return view('admin.dashboard', compact(
+            'totalKamar','kamarKosong','kamarTerisi','jumlahPengunjung',
+            'recentBookings','todayCheckins','upcomingCheckouts'
+        ));
     }
 }

@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             KamarSeeder::class,
             PengunjungSeeder::class,
+            MenuPesmaBogaSeeder::class,
         ]);
     }
 }

@@ -41,7 +41,8 @@
         <nav class="flex gap-6 items-center">
           <a href="{{ route('kamar.index') }}" class="font-semibold opacity-90 hover:opacity-100 hover:underline">Data Kamar</a>
           <a href="{{ route('pengunjung.index') }}" class="font-semibold opacity-90 hover:opacity-100 hover:underline">Data Pengunjung</a>
-          <a href="#" class="font-semibold opacity-90 hover:opacity-100 hover:underline">Report Monthly</a>
+          <a href="{{ route('report.monthly') }}" class="font-semibold opacity-90 hover:opacity-100 hover:underline">Report Monthly</a>
+          <a href="{{ route('pengunjung.pending') }}" class="font-semibold opacity-90 hover:opacity-100 hover:underline">Pembayaran Pending</a>
         </nav>
 
         <!-- Logout Button -->

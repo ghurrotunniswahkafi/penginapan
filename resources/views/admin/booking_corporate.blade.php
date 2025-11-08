@@ -20,6 +20,10 @@
         <input name="jumlah_peserta" class="form-control">
         <label>Jumlah Kamar</label>
         <input name="jumlah_kamar" class="form-control">
+        <label class="mt-2">Kebutuhan konsumsi - Snack (contoh: 20 porsi) <small style="color:#666">(kosong jika tidak)</small></label>
+        <input name="kebutuhan_snack" class="form-control" placeholder="jumlah porsi atau keterangan">
+        <label class="mt-2">Kebutuhan konsumsi - Makan (contoh: 20 porsi) <small style="color:#666">(kosong jika tidak)</small></label>
+        <input name="kebutuhan_makan" class="form-control" placeholder="jumlah porsi atau keterangan">
         <label>Special Request</label>
         <textarea name="special_request" class="form-control"></textarea>
       </div>
